@@ -1,0 +1,21 @@
+sudo apt update
+sudo apt install -y git python3-smbus python3-pip i2c-tools
+
+
+cd ~
+git clone https://github.com/DexterInd/GrovePi.git
+cd GrovePi
+
+
+cd ~/GrovePi/Software/Python
+sudo pip3 install -r requirements.txt
+
+
+cd ~/GrovePi/Firmware
+sudo bash firmware_update.sh
+
+i2cdetect -y 1
+
+
+cd ~/GrovePi/Software/Python/examples
+python3 grove_led_blink.py
