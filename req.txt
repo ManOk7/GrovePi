@@ -4,3 +4,31 @@ sudo avrdude -c avr109 -p m328p -P /dev/ttyS0 -b 115200 -e -U flash:w:grove_pi_f
 
 sudo chmod 666 /dev/ttyAMA0
 sudo chmod 666 /dev/ttyS0
+
+
+sudo apt install git build-essential automake autoconf libtool pkg-config -y
+cd ~
+git clone https://github.com/kcuzner/avrdude
+cd avrdude
+
+./bootstrap
+./configure
+make
+sudo make install
+
+avrdude -c linuxgpio
+
+sudo nano /etc/avrdude_gpio.conf
+programmer
+  id = "linuxgpio";
+  desc = "Use sysfs interface to bitbang GPIO pins";
+  type = "linuxgpio";
+  reset = 18;
+  sck = 11;
+  mosi = 10;
+  miso = 9;
+;
+
+
+cd ~/GrovePi/Firmware
+sudo avrdude -C /etc/avrdude_gpio.conf -c linuxgpio -p m328p -U flash:w:grove_pi_firmware.hex:i
