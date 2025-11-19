@@ -1,0 +1,6 @@
+cd ~/GrovePi/Firmware
+sudo avrdude -c avr109 -p m328p -P /dev/ttyAMA0 -b 115200 -e -U flash:w:grove_pi_firmware.hex:i
+sudo avrdude -c avr109 -p m328p -P /dev/ttyS0 -b 115200 -e -U flash:w:grove_pi_firmware.hex:i
+
+sudo chmod 666 /dev/ttyAMA0
+sudo chmod 666 /dev/ttyS0
