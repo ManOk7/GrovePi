@@ -1,0 +1,7 @@
+sudo apt update
+sudo apt install git python3-smbus python3-pip i2c-tools -y
+git clone https://github.com/DexterInd/GrovePi
+cd GrovePi/Firmware
+sudo bash firmware_update.sh
+
+python3 ~/GrovePi/Software/Python/examples/grove_air_quality_sensor.py
