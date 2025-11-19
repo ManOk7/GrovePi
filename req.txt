@@ -32,3 +32,20 @@ programmer
 
 cd ~/GrovePi/Firmware
 sudo avrdude -C /etc/avrdude_gpio.conf -c linuxgpio -p m328p -U flash:w:grove_pi_firmware.hex:i
+
+
+
+
+
+
+sudo apt remove avrdude -y
+sudo apt install git make gcc g++ automake autoconf libtool pkg-config -y
+cd ~
+git clone https://github.com/larsimmisch/avrdude-linuxgpio.git
+cd avrdude-linuxgpio
+
+make
+sudo make install
+
+avrdude -c linuxgpio
+
